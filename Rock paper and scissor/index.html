@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rock Paper Scissor</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Winky+Sans:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="icons-container">
-    <span class="rock-btn">Rock🪨</span>
-    <span class="paper-btn">Paper📃</span>
-    <span class="scissors-btn">Scissors✂️</span>
-  </div>
-  <div class="hands">
+   <div class="icons-container">
+       <div class="rock-btn">Rock🪨</div>
+       <div class="paper-btn">
+        Paper📃
+       </div>
+       <div class="scissors-btn">
+        Scissors✂️
+       </div>
+   </div>
+   <div class="play-game">
     <div class="user-hand">
-      <p>Your score (<span class="user-score">0</span>)</p>
-      <span class=" user hand-icon">🤜</span>
+      <p>Your score (<span>0</span>)</p>
+       <div class="user hand-icon">🤜</div>
     </div>
+    <div class="result">
+    Start Playing!!
+   </div>
     <div class="computer-hand">
-      <p>Computer's score (<span class="computer-score">0</span>)</p>
-      <span class="computer hand-icon">🤛</span>
+      <p>Sandeep score (<span>0</span>)</p>
+       <div class="computer hand-icon">🤛</div>
     </div>
-  </div>
-  <div class="result"></div>
+   </div>
+   <!-- Popup -->
+    <div class="popup-overlay">
+      <div class="popup-content">
+        <h2 class="popup-title">Sandeep Wins 🤛</h2>
+        <button class="popup-close-btn">Play Again</button>
+      </div>
+    </div>
+  <!-- audio -->
+   <audio class="click-sound" src="./sounds/click.mp3" preload="auto"></audio>
+   <audio class="shake-sound" src="./sounds/shake.mp3" preload="auto"></audio>
+   <audio class="win-sound" src="./sounds/win.mp3" preload="auto"></audio>
+   <audio class="loose-sound" src="./sounds/lose.mp3" preload="auto"></audio>
 </body>
-
 </html>
