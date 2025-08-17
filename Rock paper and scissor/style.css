@@ -20,13 +20,14 @@ body {
       transparent 1px
     ),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-size: 40px 40px;
 }
 .icons-container {
   display: flex;
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
+/* updated Button styles with gradient */
 .rock-btn,
 .paper-btn,
 .scissors-btn {
@@ -83,7 +84,6 @@ body {
 .scissors-btn:active {
   transform: scale(0.98) translateY(2px);
 }
-
 .play-game {
   display: flex;
   justify-content: space-between;
@@ -93,10 +93,8 @@ body {
   perspective: 1000px;
 }
 .play-game p {
-  font-size: 1.5rem;
-}
-.user .hand-icon {
-  text-shadow: 0 0 15px rgba(57, 186, 61, 0.5);
+  font-size: 1.3rem;
+  text-align: center;
 }
 .hand-icon {
   font-size: 8rem;
@@ -105,7 +103,58 @@ body {
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
 }
+/* Improved Shake Animation */
+.shakeUserHands {
+  animation: shakeUserHands 0.6s infinite ease-in-out;
+}
+.shakeComputerHands {
+  animation: shakeComputerHands 0.5s infinite ease-in-out;
+}
+@keyframes shakeUserHands {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(15deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(-15deg) scale(1.1);
+  }
+  75% {
+    transform: rotate(10deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+@keyframes shakeComputerHands {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(15deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(-15deg) scale(1.1);
+  }
+  75% {
+    transform: rotate(10deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+.hand-icon.active {
+  animation: handShake 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #ffd700;
 
+  .user-hand .hand-icon {
+    text-shadow: 0 0 15px rgba(57, 186, 61, 0.5);
+  }
+}
+.computer-hand .hand-icon {
+  text-shadow: 0 0 15px rgba(57, 186, 61, 0.5);
+}
 .result {
   padding: 1rem;
   border-radius: 10px;
@@ -117,7 +166,7 @@ body {
   align-self: center;
   font-size: 1.7rem;
 }
-
+/* Popup overlay */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -130,10 +179,15 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  /* opacity: 0; */
-  /* visibility: hidden; */
+  opacity: 0;
+  visibility: hidden;
   transition: all 0.5s ease;
 }
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+/* popup content */
 .popup-content {
   background: #1a1a1a;
   padding: 2rem;
@@ -144,12 +198,17 @@ body {
   transform: scale(0.8);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.popup-overlay.active .popup-content {
+  transform: scale(1);
+}
+/* popup title */
 .popup-title {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   color: #fff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
+/* popup close button */
 .popup-close-btn {
   padding: 0.8rem 2rem;
   font-size: 1.6rem;
@@ -161,17 +220,26 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.popup-overlay.active {
-  opacity: 1;
-  visibility: visible;
+.popup-close-btn:hover {
+  background: linear-gradient(45deg, #1976d2, #2196f3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
 }
-.popup-overlay.active .popup-content {
-  transform: scale(1);
+.popup-close-btn:active {
+  transform: translateY(0);
 }
+
 @media (max-width: 768px) {
   .icons-container {
     flex-direction: column;
-    width: 50%;
+    width: 80%;
     text-align: center;
+  }
+  .hand-icon {
+    font-size: 4.4rem;
+  }
+  .result {
+    font-size: 0.75rem;
+    width: 25%;
   }
 }
